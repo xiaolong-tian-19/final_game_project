@@ -34,6 +34,8 @@ class UpperPipe(pygame.sprite.Sprite):
 
         self.velocity = velocity
 
+        self.passed = False
+
     def update(self):
         self.rect.move_ip(self.velocity, 0)
 
@@ -52,6 +54,8 @@ class LowerPipe(pygame.sprite.Sprite):
 
         self.velocity = velocity
 
+        self.passed = False
+
     def update(self):
         self.rect.move_ip(self.velocity, 0)
 
@@ -60,9 +64,16 @@ class Heart(pygame.sprite.Sprite):
     def __init__(self, pos, velocity):
         super(Heart, self).__init__()
 
-        self.image = pygame.image.load('images/heart.png')
+        # self.image = pygame.image.load('images/heart.png')
+        self.images = []
+        for i in range(16):
+            self.images.append(pygame.transform.scale(pygame.image.load('images/heart'+str(i)+'.png'), (HEART_WIDTH, HEART_HEIGHT)))
 
-        self.image = pygame.transform.scale(self.image, (HEART_WIDTH, HEART_HEIGHT))
+        # self.image = pygame.transform.scale(self.image, (HEART_WIDTH, HEART_HEIGHT))
+
+        self.index = 0
+
+        self.image = self.images[self.index]
 
         self.rect = self.image.get_rect()
 
@@ -71,6 +82,18 @@ class Heart(pygame.sprite.Sprite):
         self.velocity = velocity
 
     def update(self):
+        # self.rect.move_ip(self.velocity, 0)
+
+        self.index = (self.index+1) % len(self.images)
+
+        self.image = self.images[self.index]
+
+        pos = self.rect.center
+
+        self.rect = self.image.get_rect()
+
+        self.rect.center = pos
+
         self.rect.move_ip(self.velocity, 0)
 
 
@@ -150,9 +173,16 @@ class Portal(pygame.sprite.Sprite):
     def __init__(self, pos, velocity, face):
         super(Portal, self).__init__()
 
-        self.image = pygame.image.load('images/portal.png')
+        # self.image = pygame.image.load('images/portal.png')
 
-        self.image = pygame.transform.scale(self.image, (PORTAL_WIDTH, PORTAL_HEIGHT))
+        self.images = []
+        for i in range(8):
+            self.images.append(pygame.transform.scale(pygame.image.load('images/tile00'+str(i)+'.png'), (PORTAL_WIDTH, PORTAL_HEIGHT)))
+
+        # self.image = pygame.transform.scale(self.image, (PORTAL_WIDTH, PORTAL_HEIGHT))
+        self.index = 0
+
+        self.image = self.images[self.index]
 
         self.face = face
         if self.face == self.RIGHT:
@@ -164,9 +194,19 @@ class Portal(pygame.sprite.Sprite):
 
         self.velocity = velocity
 
-        self.passed = False
-
     def update(self):
+        # self.rect.move_ip(self.velocity, 0)
+
+        self.index = (self.index+1) % len(self.images)
+
+        self.image = self.images[self.index]
+
+        pos = self.rect.center
+
+        self.rect = self.image.get_rect()
+
+        self.rect.center = pos
+
         self.rect.move_ip(self.velocity, 0)
 
 

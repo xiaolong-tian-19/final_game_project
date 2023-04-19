@@ -126,10 +126,10 @@ while True:
 
         Portal.COUNTER -= 1
 
-    for portal in portals:
-        if portal.passed == False:
-            if portal.rect.right < bird.rect.left:
-                portal.passed = True
+    for pipe in pipes:
+        if pipe.passed == False and type(pipe) == LowerPipe:
+            if pipe.rect.right < bird.rect.left:
+                pipe.passed = True
                 bird.score += 1
         
 
