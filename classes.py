@@ -32,8 +32,23 @@ class UpperPipe(pygame.sprite.Sprite):
     def __init__(self, pos, velocity):
         super(UpperPipe, self).__init__()
 
-        self.image = pygame.transform.rotate(pygame.image.load(
-		'images/pipe.png'), 180)
+        prob = random.random()
+        num_images = 6
+
+        if prob < 1/num_images:
+            self.image = pygame.image.load('images/pipe.png')
+        elif prob < 2/num_images:
+            self.image = pygame.image.load('images/london-big-ben-removebg.png')
+        elif prob < 3/num_images:
+            self.image = pygame.transform.rotate(pygame.image.load('images/spikes.png'), 180)
+        elif prob < 4/num_images:
+            self.image = pygame.image.load('images/crates.png')
+        elif prob < 5/num_images:
+            self.image = pygame.image.load('images/roller.png')
+        else:
+            self.image = pygame.image.load('images/tree-trunk-removebg.png')
+
+        self.image = pygame.transform.rotate(self.image, 180)
 
         self.image = pygame.transform.scale(self.image, (PIPE_WIDTH, PIPE_HEIGHT))
 
