@@ -19,8 +19,14 @@ heart_group = pygame.sprite.Group()
 hearts = []
 portal_group = pygame.sprite.Group()
 portals = []
+ring_group = pygame.sprite.Group()
+rings = []
 score = Score()
 score_group = pygame.sprite.Group(score)
+life = Life(LIEF_POS)
+life_group = pygame.sprite.Group(life)
+medal = Medal(MEDAL_POS, 0)
+medal_group = pygame.sprite.Group(medal)
 
 
 for i in range(NUMBER_OF_PIPES+1):
@@ -47,9 +53,20 @@ while True:
             bird.flap()
 
     if bird.is_immune == False:
+        if rings != []:
+            ring_group.remove(rings.pop(0))
+
         if pygame.sprite.groupcollide(bird_group, pipe_group, False, False):
             bird.is_immune = True
             bird.number_of_lives -= 1
+
+            if bird.number_of_lives <= 0:
+                # return bird.score
+                exit(0)
+
+            ring = Ring(bird)
+            ring_group.add(ring)
+            rings.append(ring)
             print("Collide with pipe.")
 
     if pygame.sprite.groupcollide(bird_group, heart_group, False, True):
@@ -139,6 +156,9 @@ while True:
     portal_group.update()
     bird_group.update()
     score_group.update(bird.score, bird.number_of_lives)
+    ring_group.update()
+    life_group.update()
+    medal_group.update(bird.score)
     screen.fill(SCREEN_COLOR)
     background_group.draw(screen)
     pipe_group.draw(screen)
@@ -146,6 +166,9 @@ while True:
     portal_group.draw(screen)
     bird_group.draw(screen)
     score_group.draw(screen)
+    ring_group.draw(screen)
+    life_group.draw(screen)
+    medal_group.draw(screen)
 
     pygame.display.update()
     clock.tick(FPS)
