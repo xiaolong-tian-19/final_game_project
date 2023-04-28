@@ -1,11 +1,15 @@
 # Game Document
 ## Introduction
 The name of the game is Alternative Flappy Bird.
+
 ![Descriptive Screenshot](/descriptive_screenshot.png)
+
 To to download, run, and play the game, navigate to a folder and clone the game repository using ```git clone https://github.com/xiaolong-tian-19/final_game_project.git```. Navigate inside the game repository, open a terminal, and type ```python flappy_bird.py``` to run and play the game.
+
 Software version:
 - Python: 3.8.10
 - Pygame: 2.1.2
+
 Game Control:
 - Space bar : start the game & flap wings of the bird
 ## Game Design
@@ -17,5 +21,8 @@ Game Control:
 - The game engine is more based on pygame itself. However, pygame does a good job as a simple game engine. It allows easy creation of sprites from custom images. Furthermore, the game implementation heavily takes advantage of the pygame sprite group, particularly grouping of the obstacles and powerups. It allows the game loop to easily keep track of the instances and updates them collectively.
 
 **Story**
-- The story of the game is quite simple.
+- The story of the game is quite simple. The flappy bird is a law-abiding citizen of the city, and is atempting to dodge different and scary obstacles in the new dytopian society, which at the time experiencing magical effects such as gaining additiona lives and being able to fly through portals. The goal of the flappy bird is to dodge as many obstacles and stay alive for as long as it can.
+
+**Player Experience**
+
 
