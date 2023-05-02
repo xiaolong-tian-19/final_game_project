@@ -14,6 +14,7 @@ Game Control:
 - Space bar : start the game & flap wings of the bird
 
 Link to Source Code: https://github.com/xiaolong-tian-19/final_game_project
+
 Link to Demo Video: https://clemson.zoom.us/rec/share/s7b_I6WkkbzeDXxS5Qr7m469aKdo0Ush0TYmMbAQFgsepJZM9-A3GPxbK-RTh-sv.48wvveIMSqFXsvhg?startTime=1682994588000
 ## Game Design
 **Mechanics/Technology**
