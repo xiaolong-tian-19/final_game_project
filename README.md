@@ -38,3 +38,34 @@ Game Control:
 
 ## Game Development & Documentation
 
+![Classes and Major Functionality Methods Diagram](/classes.png)
+
+- Receiving input from the player is quite simple for the game. The only key that the player uses to in order to play the game is the space bar. The player uses the space bar to start the flappy bird game, and during the game, the player hits the space bar for the flappy bird to flap its wings. Therefore, the game implementation does not use a separate controller for handling user input. Receiving user input and update the game state accordingly is done in the game loop. In each iteration of the game loop, it checks all the events in the event queue. If the event is a key down and the event key is space, it will call the bird.flap() for the bird to flap its wings and add an upward acceleration.
+- The state of the game are stored in various objects, specifically pygame sprites, representing entities in the game. For example, the position, velocity, acceleration, animation frame, number of lives, immune status, immune time, and image of the flappy bird are stored in an instance of the sprite class called Bird. Many other models exist in the game, such as sprite classes for obstacles (LowerPipe & UpperPipe), hearts (Heart), portals (Portal), score (Score), background (Background), etc. Instances of these models are instantiated whenever appropriate, for example, when a new pipe is created and put into the screen. They are deleted and removed as well, such as when the heart is collected by the flappy bird, the instance object representing the heart is removed. Objects of the same type are often group together using the pygame sprite Group to allow simple handling. The state of the game is updated in each iteration of the game loop through the update method of the instances. In the game loop, specific methods are often called whenever necessary to update the state of the game. For example, when the flappy bird collides with an object, one will be substracted from the total number of lives and the immune status of the flappy bird will start. Updating the state of the instances allow the game state to be in sync with events that are happening.
+- The screen is updated through the draw() method of the pygame sprite group. Sprite class instances that are models of entities in the game are grouped together based on their type, for example, obstacles (pipe_group), hearts (heart_group), portals (portal_group), etc. At the end of each iteration of the game loop, draw() is called for each of the group in corresponding order. Some group must be drawn after others. This could be portal_group drawn after background, or score_group drawn after pipe_group. Before sprites are drawn, their states and values are updated. This allow the animation frame, and the image of the sprites to be changed before they are drawn, and therefore enables animation of entities such as bird, portals, etc. 
+- I am not aware of any major bugs or flaws. One thing that presents a nuisance is the score and number of lives displayed on the top right. As the player advances in the game and earns higher score and more lives, the score and number of lives increase and thus have more digits. It could be possible that the text will overun the symbols representing score (a medal) and life (a heart). It was not critial to the functionality of the game, so I did not prioritize this, and I couldn't find enough time to figure out how to do it. One possible way to solve the issue is to move the symbols (medal and heart) based on the number of digits of the score/number of lives or to scale the text font of the score/number of lives so that they will always remain about the same width. One thing that I was not also satisfied about is the transition from the start screen to the main game and vice versa. I think that the transition could be made more natural and smoother.
+- I did not have to colloborate, but the main tool I used for coding is VSCode. The coder versioning is done through Git and GitHub. It helps me keeps tracks of what changes has been made and allow me to recover files if I accidentally delete them. I used a variety of other tools to help with making the 2D game as well, particularly with respect to creating the graphic images I want. I heavily used an online website to remove background from images. The same website also allows me to break gif into frames and split sprite sheet into individual images. I also use Adobe products such as Photoshop and InDesign to help with making a few custom images and crop the images so that their size roughly corresponds to their size with background removed.
+
+## Group Member Roles, Tasks, and Performance
+- I am the only member, so I am responsible for all the work.
+- Milestone 1: March 30
+    - Create the background of the game
+    - Create pipe obstacles
+    - Create side scrolling of the game
+    - Create all classes represent objects in the game
+    - Create view, controller, and game loop
+    - Updated game document
+- Milestone 2: April 18
+    - Add animation to the objects in the game – April 12
+    - Adjust the game parameters to make the game more playable – April 16
+    - Updated game document – April 16
+- Final Game Submission and Presentation
+    - Allow the player to play as many times as desired - April 25
+    - Add different type of obstacles to the game - April 28
+    - Add a parrallax srolling backgroup to the game - April 28
+    - Add a start screen for the game - April 29
+    - Completed and polished game - May 3
+    - Completed game document - May 3
+    - Make 30+ seconds demo video - May 3
+    - Present your game during the final period for this class - May 4
+
