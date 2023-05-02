@@ -175,6 +175,7 @@ def play(screen, clock):
 
 pygame.init()
 screen = pygame.display.set_mode(SCREEN_SIZE)
+pygame.display.set_caption("Alternative Flappy Bird")
 
 clock = pygame.time.Clock()
 clock.tick(FPS)

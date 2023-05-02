@@ -12,6 +12,9 @@ Software version:
 
 Game Control:
 - Space bar : start the game & flap wings of the bird
+
+Link to Source Code: https://github.com/xiaolong-tian-19/final_game_project
+Link to Demo Video: https://clemson.zoom.us/rec/share/s7b_I6WkkbzeDXxS5Qr7m469aKdo0Ush0TYmMbAQFgsepJZM9-A3GPxbK-RTh-sv.48wvveIMSqFXsvhg?startTime=1682994588000
 ## Game Design
 **Mechanics/Technology**
 - The game play loop of my game has two layers. In the first layer, the game loop initiates a start screen that displays the current and best scores the player has achieved. If the player hits the space bar, the game loop in the second layer starts. This game loop initially creates the bird that the player can control, obstacles for the bird to dodge, powerups the player can collect, etc. In each iteration, this game loop checks to see if there are collisions, creates more obstacles, and so on. It updates the game instances, draw them on the screen, and goes back to the begining of the loop. Once the flappy bird uses up all of its lives, the game loop terminates and return the current score to the game loop in the first layer, which will displays the current and best score. The game loop in the first layer will then wait for the player either to close the game or to hit enter to play again.
@@ -49,12 +52,12 @@ Game Control:
 ## Group Member Roles, Tasks, and Performance
 - I am the only member, so I am responsible for all the work.
 - Milestone 1: March 30
-    - Create the background of the game
-    - Create pipe obstacles
-    - Create side scrolling of the game
-    - Create all classes represent objects in the game
-    - Create view, controller, and game loop
-    - Updated game document
+    - Create the background of the game - March 16
+    - Create pipe obstacles - March 20
+    - Create side scrolling of the game - March 29
+    - Create all classes represent objects in the game - March 29
+    - Create view, controller, and game loop - March 29
+    - Updated game document - March 30
 - Milestone 2: April 18
     - Add animation to the objects in the game – April 12
     - Adjust the game parameters to make the game more playable – April 16
